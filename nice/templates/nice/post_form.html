@@ -1,0 +1,20 @@
+{% extends 'nice/base.html' %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+<div class="container mb-5 mt-5">
+    <div class="card">
+        <div class="card-header">
+            {{title}} Your Blog
+        </div>
+        <div class="card-body">
+            {{ form.media }}
+            <form method="POST" action="." enctype="multipart/form-data">
+                {% csrf_token %}
+                {{form|crispy}}
+                <button class="btn btn-primary" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

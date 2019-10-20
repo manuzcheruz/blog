@@ -1,0 +1,27 @@
+{% extends 'nice/base.html' %}
+{% load static %}
+{% block content %}
+<div class="container mb-50 mt-50" style="padding-top: 100px; padding-bottom: 400px;">
+    <div class="card">
+        <div class="card-header center">
+            Search Results
+        </div>
+        <div class="card-body">
+            {% for post in queryset %}
+            <a href="{% url 'buzz' pk=post.id%}">{{post.title}}</a>
+            <br>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+<div class="container mb-50 mt-50">
+    <div class="card">
+        <div class="card-header">
+
+        </div>
+        <div class="card-body">
+        </div>
+    </div>
+</div>
+
+{% endblock content %}
