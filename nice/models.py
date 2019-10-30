@@ -24,6 +24,7 @@ class Author(models.Model):
 
 class Category(models.Model):
     title = models.CharField(max_length=20)
+    thumbnail = models.ImageField()
 
     def __str__(self):
         return self.title

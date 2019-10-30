@@ -37,6 +37,11 @@
                             {% if request.user.is_staff %}
                             <li><a href="{% url 'post-create' %}">create</a></li>
                             {% endif %}
+                            {% if user.is_authenticated %}
+                            <li><a href="{% url 'account_logout' %}">logout</a></li>
+                            {% else %}
+                            <li><a href="{% url 'account_login' %}">login</a></li>
+                            {% endif %}
                         </ul>
                     </nav>
                     <div class="hamburger ml-auto menu_mm">

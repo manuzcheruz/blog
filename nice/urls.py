@@ -6,6 +6,7 @@ urlpatterns = [
     #url(r'^', views.home_page, name="HomePage"),
     # url(r'home/', views.PostList.as_view(), name='home'),
     url(r'^$', views.blog, name='home'),
+    # url(r'login/', views.login, name='login'),
     url(r'contact/', views.contact, name='contact'),
     url(r'search/', views.search, name='search'),
     # url(r'bizna', PostCreateView.as_view(), name="bizna"),

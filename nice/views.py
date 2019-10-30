@@ -34,6 +34,10 @@ def home_page(request):
     return render(request, 'nice/home.html')
 
 
+# def login(request):
+#     return render(request, 'account/login.html')
+
+
 # class PostCreateView(generic.CreateView):
 #     model = Post
 #     # fields = ['Business_name', 'location', 'Business_type']
