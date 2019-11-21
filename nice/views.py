@@ -154,6 +154,11 @@ def contact(request):
     return render(request, 'nice/contact.html')
 
 
+def profile(request, pk):
+    writer = get_object_or_404(Author, pk=pk)
+    return render(request, 'nice/profile2.html', {'writer': writer, 'posts': Post.objects.filter(author=writer)})
+
+
 def blog(request):
     category_count = get_category_count()
     # print(category_count)

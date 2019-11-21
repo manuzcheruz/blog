@@ -5,8 +5,8 @@
 <div class="home">
 	<div class="home_background parallax-window" data-parallax="scroll" data-image-src="{{category.thumbnail.url}}"
 		data-speed="0.8"></div>
-	<div class="home_content">
-		<div class="post_title">{{category}}</div>
+	<div class="home_content card" style="opacity: 0.5; width: 300px;">
+		<div class="post_title" style="color: teal;">{{category}}</div>
 	</div>
 </div>
 
@@ -44,7 +44,7 @@
 												href="{% url 'buzz' pk=post.id%}">{{post.title|slice:"200"|safe}}</a>
 										</div>
 										<small class="post_meta"><a
-												href="#">{{post.author}}</a><span>{{post.created_on|timesince}}
+												href="{% url 'profile' pk=post.author.id%}">{{post.author}}</a><span>{{post.created_on|timesince}}
 												ago</span></small>
 									</div>
 								</div>

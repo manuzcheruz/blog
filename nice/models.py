@@ -17,6 +17,8 @@ class PostView(models.Model):
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
+    profile_bg = models.ImageField()
+    description = models.TextField()
 
     def __str__(self):
         return self.user.username
