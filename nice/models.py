@@ -14,6 +14,10 @@ class PostView(models.Model):
         return self.user.username
 
 
+class Test(models.Model):
+    testing = models.TextField()
+
+
 class Author(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     profile_picture = models.ImageField()
