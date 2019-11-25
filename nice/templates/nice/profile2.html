@@ -1,13 +1,14 @@
 {% extends 'nice/base.html' %} {% load static %} {% block content %}
 
 <div class="home">
-    <div class="home_background_2 parallax-window-2" data-parallax="scroll"
-        style="background-image: url({{writer.profile_bg.url}});" data-speed="0.5"></div>
+    <div class="home_background_2 parallax-window" data-parallax="scroll" data-image-src="{{writer.profile_bg.url}}"
+        data-speed="0.5">
+    </div>
     <div class="home_content_new">
         <div class="col-md-8 text text-center">
             <div class="img mb-4" style="background-image: url({{writer.profile_picture.url}});"></div>
-            <div class="desc">
-                <h1 class="mb-4" style="color: teal; padding-left: 15px;">{{writer}}</h1>
+            <div class="desc card" style="background: rgba(0, 0, 0, 0.4); width: 250px;">
+                <h1 class="mb-4" style="color: white">{{writer}}</h1>
             </div>
         </div>
     </div>
@@ -25,13 +26,11 @@
                     <!-- Category -->
 
                     <div class="category">
-                        <div class="container" style="width: 70%;">
-                            <div class="card">
-                                <div class="card-body">
-                                    <div class="card-title text-center card-title-small black-text"
-                                        style="color: black; font-size: 16px;">
-                                        {{writer.description}}
-                                    </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="card-title text-center" style="font-size: 18px;
+                                    font-weight: 600; color: rgba(0, 0, 0, 1);">
+                                    {{writer.description}}
                                 </div>
                             </div>
                         </div>

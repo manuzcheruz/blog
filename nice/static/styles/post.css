@@ -254,8 +254,9 @@ section {
 
 .parallax-window-2 {
 	min-height: 700px;
-	background: transparent;
-	opacity: 0.3;
+	/* background: transparent; */
+	/* background: rgba(0, 0, 0, 0.8); */
+	/* opacity: 0.3; */
 }
 
 .nopadding {
@@ -662,14 +663,14 @@ section {
 }
 
 .home_content_new .text .img {
-	width: 200px;
-	height: 200px;
+	width: 250px;
+	height: 250px;
 	margin: 0 auto;
 	-webkit-border-radius: 50%;
 	-moz-border-radius: 50%;
 	-ms-border-radius: 50%;
 	border-radius: 50%;
-	border: 5px solid white;
+	border: 5px solid rgb(10, 10, 10);
 }
 
 .home_content_new .text .subheading {
