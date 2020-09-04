@@ -25,7 +25,7 @@ def get_category_count():
 def category_detail(request, pk):
     category = get_object_or_404(Category, pk=pk)
 
-    return render(request, 'nice/categories.html', {'category': category, 'posts': Post.objects.filter(categories=category)[:5], 'post_list_topstories': Post.objects.filter(
+    return render(request, 'nice/categories.html', {'category': category, 'posts': Post.objects.filter(categories=category), 'post_list_topstories': Post.objects.filter(
         status=1, postview__gte=1).order_by('postview')[0:4], 'counting_cat': Post.objects.values(
         'categories__title').annotate(Count('categories__title'))[:4], 'category_main': Category.objects.all()})
 
