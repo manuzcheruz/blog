@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^', include('nice.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('allauth.urls')),
+    url(r'hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),
 ]
 
 if settings.DEBUG:

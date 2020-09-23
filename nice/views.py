@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.views import generic
+from hitcount.views import HitCountDetailView
 from .models import *
 from .forms import CommentForm, PostForm
 #from .forms import PostForm
@@ -263,10 +264,11 @@ def footer(request):
 #         # context['general_list'] = Post.objects.filter(Post_type='1')
 #         return context
 
-class PostDetailView(generic.DetailView):
+class PostDetailView(HitCountDetailView):
     model = Post
     context_object_name = 'post'
     form = CommentForm()
+    count_hit = True
 
     def get_object(self):
         obj = super().get_object()

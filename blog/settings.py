@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'nice',
+    'hitcount',
     'bootstrap4',
     'crispy_forms',
     'tinymce',
