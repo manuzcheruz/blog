@@ -7,29 +7,29 @@ User = get_user_model()
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
-        fields = ('email', 'username', )
+        fields = ('id', 'email', 'username', )
 
 class PostSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Post
-        fields = ('title', 'categories', 'author', 'updated_on', 'content', 'thumbnail', 'created_on', 'featured')
+        fields = ('id', 'title', 'categories', 'author', 'updated_on', 'content', 'thumbnail', 'created_on', 'featured')
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Comment
-        fields = ('user', 'content', 'timestamp', 'post')
+        fields = ('id', 'user', 'content', 'timestamp', 'post')
 
 class CategorySerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Category
-        fields = ('title', 'thumbnail')
+        fields = ('id', 'title', 'thumbnail')
 
 class AuthorSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Author
-        fields = ('user', 'profile_picture', 'profile_bg', 'description')
+        fields = ('id', 'user', 'profile_picture', 'profile_bg', 'description')
 
 class ContactSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Contact
-        fields = ('name', 'email', 'message', 'timestamp')
+        fields = ('id, ''name', 'email', 'message', 'timestamp')
