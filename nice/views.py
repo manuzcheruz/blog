@@ -7,9 +7,40 @@ from .forms import CommentForm, PostForm
 from django.urls import reverse_lazy, reverse
 from django.db.models import Count, Q
 #from marketing.models import Signup
+
+# rest framework views
+from rest_framework import viewsets
+from rest_framework import generics
+from .serializers import *
+
 # Create your views here.
 
+# rest viewsets
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
 
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
+class CommentViewSet(viewsets.ModelViewSet):
+    queryset = Comment.objects.all()
+    serializer_class = CommentSerializer
+
+class PostViewSet(viewsets.ModelViewSet):
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+
+class AuthorViewSet(viewsets.ModelViewSet):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+class CategoryViewSet(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer
+
+# all other view
 def get_author(user):
     qs = Author.objects.filter(user=user)
     if qs.exists():
@@ -33,54 +64,6 @@ def category_detail(request, pk):
 
 def home_page(request):
     return render(request, 'nice/home.html')
-
-
-# def login(request):
-#     return render(request, 'account/login.html')
-
-
-# class PostCreateView(generic.CreateView):
-#     model = Post
-#     # fields = ['Business_name', 'location', 'Business_type']
-#     form_class = PostForm
-#     success_url = None
-
-#     def form_valid(self, form):
-#             # form.instance.created_by = self.request.user
-#             # self.object = form.save()
-#         if form.is_valid():
-#             form.instance = self.object
-#             form.save()
-
-#         return super(PostCreateView, self).form_valid(form)
-
-#     # redirecting the user to the business detail view they just created
-
-#     def get_success_url(self):
-#         return reverse_lazy('buzz', kwargs={'pk': self.object.pk})
-
-# class PostCreateView(generic.CreateView):
-#     model = Post
-#     #template_name = 'post_create.html'
-#     form_class = PostForm
-
-#     # def get_context_data(self, **kwargs):
-#     #     context = super().get_context_data(**kwargs)
-#     #     context['title'] = 'Create'
-#     #     return context
-
-#     def form_valid(self, form):
-#         form.instance.author = get_author(self.request.user)
-#         # form.save()
-#         # return redirect(reverse('buzz', kwargs={
-#         #     'pk': form.instance.pk
-#         # }))
-#         # return super(PostCreateView, self).form_valid(form)
-#         return super().form_valid(form)
-
-#     # def get_success_url(self):
-#     #     return reverse_lazy('buzz', kwargs={'pk': self.object.pk})
-
 
 def post_create(request):
     title = 'Create'
@@ -126,24 +109,6 @@ def post_delete(request, pk):
     post = get_object_or_404(Post, id=pk)
     post.delete()
     return redirect(reverse("home2"))
-
-# class PostUpdateView(generic.UpdateView):
-#     model = Post
-#     template_name = 'nice/post_form.html'
-#     form_class = PostForm
-
-#     def get_context_data(self, **kwargs):
-#         context = super().get_context_data(**kwargs)
-#         context['title'] = 'Update'
-#         return context
-
-#     def form_valid(self, form):
-#         form.instance.author = get_author(self.request.user)
-#         form.save()
-#         return redirect(reverse('buzz', kwargs={
-#             'pk': form.instance.pk
-#         }))
-
 
 class PostDeleteView(generic.DeleteView):
     model = Post
@@ -214,55 +179,6 @@ def footer(request):
         #new_signup = Signup()
         new_signup.email = email
         new_signup.save()
-
-# class PostList(generic.ListView):
-#     # queryset = Post.objects.filter(status=1).order_by('-created_on')
-#     model = Post
-#     # template_name = 'nice/home.html'
-#     context_object_name = 'Posts'
-
-#     def get_context_data(self, **kwargs):
-#         # To use the pk set in Products model to get specific products for individual Post
-#         # pk = self.kwargs['pk']
-#         # Call the base implementation first to get a context
-#         context = super(PostList, self).get_context_data(**kwargs)
-#         # Add in a QuerySet of all the books
-#         context['post_list'] = Post.objects.filter(
-#             status=1).order_by('-created_on')
-#         context['post_list_main'] = Post.objects.filter(
-#             status=1).order_by('-created_on')[0:1]
-#         context['post_list_largest'] = Post.objects.filter(
-#             status=1).order_by('-created_on')[0:1]
-#         context['post_list_topstories'] = Post.objects.filter(
-#             status=1).order_by('-created_on')[0:4]
-#         context['posting'] = Post.objects.all()
-#         return context
-
-
-# class PostDetail(generic.DetailView):
-#     model = Post
-#     template_name = 'nice/post_detail.html'
-
-
-# class PostDetailView(generic.DetailView):
-#     model = Post
-#     # paginated_by = 3
-#    # form_class = ReviewsForm
-
-#     def get_context_data(self, **kwargs):
-#         # first import the global user position variable
-#         # global location
-#         # To use the pk set in Products model to get specific products for individual Post
-#         pk = self.kwargs['pk']
-#         # Call the base implementation first to get a context
-#         context = super(PostDetailView, self).get_context_data(**kwargs)
-#         context['Hotel_list'] = Post.objects.filter(categories='5')
-#         # context['Butchery_list'] = Post.objects.filter(Post_type='2')
-#         # context['self_list'] = Post.objects.filter(Post_type='4')
-#         # context['rental_list'] = Post.objects.filter(Post_type='0')
-#         # context['mpesa_list'] = Post.objects.filter(Post_type='6')
-#         # context['general_list'] = Post.objects.filter(Post_type='1')
-#         return context
 
 class PostDetailView(HitCountDetailView):
     model = Post

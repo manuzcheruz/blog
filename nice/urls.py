@@ -1,8 +1,18 @@
-from django.conf.urls import url
+from django.conf.urls import url, include
 from . import views
 from .views import *
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'authors', AuthorViewSet)
+router.register(r'contacts', views.ContactViewSet)
+router.register(r'comments', views.CommentViewSet)
+router.register(r'posts', views.PostViewSet)
+router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
+    url(r'rest/', include(router.urls)),
+    # url(r'users', views.UserListView.as_view()),
     #url(r'^', views.home_page, name="HomePage"),
     # url(r'home/', views.PostList.as_view(), name='home'),
     url(r'^$', views.blog, name='home'),
