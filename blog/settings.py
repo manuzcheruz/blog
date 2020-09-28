@@ -46,13 +46,13 @@ INSTALLED_APPS = [
     'marketing',
 
     'rest_framework',
-    'corsheaders'
+    'corsheaders',
 ]
 
 SITE_ID = 1
 
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware'
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
