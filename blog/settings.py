@@ -207,4 +207,12 @@ REST_FRAMEWORK = {
     ]
 }
 
+# If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+]  # If this is used, then not need to use `CORS_ORIGIN_ALLOW_ALL = True`
+CORS_ORIGIN_REGEX_WHITELIST = [
+    'http://localhost:3000',
+]
