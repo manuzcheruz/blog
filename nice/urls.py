@@ -12,7 +12,7 @@ router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
     url(r'rest/', include(router.urls)),
-    # url(r'users', views.UserListView.as_view()),
+    url(r'users', views.UserListView.as_view()),
     #url(r'^', views.home_page, name="HomePage"),
     # url(r'home/', views.PostList.as_view(), name='home'),
     url(r'^$', views.blog, name='home'),
