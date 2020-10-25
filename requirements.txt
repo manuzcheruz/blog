@@ -34,4 +34,3 @@ sorl-thumbnail==12.5.0
 sqlparse==0.3.0
 urllib3==1.25.6
 whitenoise==4.1.4
-mmm
