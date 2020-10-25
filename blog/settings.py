@@ -216,3 +216,6 @@ CORS_ORIGIN_WHITELIST = [
 CORS_ORIGIN_REGEX_WHITELIST = [
     'http://localhost:3000',
 ]
+
+# django allauth authentication
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
