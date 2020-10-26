@@ -26,7 +26,7 @@ router.register(r'users', UserViewSet)
 urlpatterns = [
     url(r'testing/', include(router.urls)),
     url(r'admin/', admin.site.urls),
-    url(r'^', include('nice.urls')),
+    url(r'^api-v1/', include('nice.urls')),
     url(r'^tinymce/', include('tinymce.urls')),
     url(r'^accounts/', include('allauth.urls')),
     url(r'hitcount/', include(('hitcount.urls', 'hitcount'), namespace='hitcount')),

@@ -46,6 +46,10 @@ INSTALLED_APPS = [
     'marketing',
 
     'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+    'rest_auth.registration',
+
     'corsheaders',
 ]
 
@@ -203,8 +207,14 @@ REST_FRAMEWORK = {
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
+
+REST_USE_JWT = True
 
 # If this is used then `CORS_ORIGIN_WHITELIST` will not have any effect
 CORS_ORIGIN_ALLOW_ALL = True
