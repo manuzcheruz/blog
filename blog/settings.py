@@ -150,7 +150,6 @@ STATICFILES_STORAGE = 'blog.storage.WhiteNoiseStaticFilesStorage'
 # STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # Tinymce
-
 TINYMCE_DEFAULT_CONFIG = {
     'cleanup_on_startup': True,
     'custom_undo_redo_levels': 20,
