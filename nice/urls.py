@@ -1,6 +1,7 @@
 from django.conf.urls import url, include
 from . import views
 from .views import *
+from .rest_views import *
 from rest_framework import routers
 # for simplejwt
 from rest_framework_simplejwt.views import (
@@ -18,6 +19,11 @@ router.register(r'posts', views.PostViewSet)
 router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
+    # new updated REST api's
+    url(r'posts/$', PostAPIView.as_view()),
+    url(r'posts/(?P<id>\d+)/$', PostDetailAPIView.as_view()),
+
+
     url(r'rest-api/', include(router.urls)),
     url(r'users', views.UserListView.as_view()),
     #url(r'^', views.home_page, name="HomePage"),

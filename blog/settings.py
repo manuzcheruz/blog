@@ -200,13 +200,11 @@ DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 REST_FRAMEWORK = {
     # Use hyperlinked styles by default.
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
-    # Only used if the `serializer_class` attribute is not set on a view.
-    'DEFAULT_MODEL_SERIALIZER_CLASS': 'rest_framework.serializers.HyperlinkedModelSerializer',
 
     # Use Django's standard `django.contrib.auth` permissions,
     # or allow read-only access for unauthenticated users.
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+        'rest_framework.permissions.IsAuthenticatedOrReadOnly'
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
@@ -255,8 +253,8 @@ JWT_AUTH = {
     'JWT_EXPIRATION_DELTA': timedelta(days=30),
     'JWT_AUDIENCE': None,
     'JWT_ISSUER': None,
-    'JWT_ALLOW_REFRESH': False,
+    'JWT_ALLOW_REFRESH': True,
     'JWT_REFRESH_EXPIRATION_DELTA': timedelta(days=30),
-    'JWT_AUTH_HEADER_PREFIX': 'Bearer',
+    'JWT_AUTH_HEADER_PREFIX': 'JWT',
     'JWT_AUTH_COOKIE': None,
 }

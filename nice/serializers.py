@@ -9,10 +9,19 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ('id', 'email', 'username', )
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
-        fields = ('id', 'title', 'categories', 'author', 'updated_on', 'content', 'thumbnail', 'created_on', 'featured')
+        fields = ('id', 
+                'title', 
+                'categories', 
+                'author', 
+                'updated_on', 
+                'content', 
+                'thumbnail', 
+                'created_on', 
+                'featured')
+        read_only_fields = ['author', 'created_on', 'updated_on']
 
 class CommentSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
