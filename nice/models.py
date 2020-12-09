@@ -23,6 +23,10 @@ class Author(models.Model):
     def __str__(self):
         return self.user.username
 
+    @property
+    def owner(self):
+        return self.user
+
 
 class Category(models.Model):
     title = models.CharField(max_length=20)
@@ -52,6 +56,10 @@ class Comment(models.Model):
     def __str__(self):
         return self.user.username
 
+    @property
+    def owner(self):
+        return self.user
+
 
 STATUS = (
     (0, "Draft"),
@@ -61,7 +69,7 @@ STATUS = (
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
-    categories = models.ManyToManyField(Category)
+    categories = models.ForeignKey(Category, on_delete=models.CASCADE)
     #slug = models.SlugField(max_length=200, unique=True)
     author = models.ForeignKey(
         Author, on_delete=models.CASCADE)
@@ -99,3 +107,7 @@ class Post(models.Model):
     @property
     def view_count(self):
         return PostView.objects.filter(post=self).count()
+
+    @property
+    def owner(self):
+        return self.author.user

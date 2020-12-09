@@ -20,12 +20,26 @@ router.register(r'categories', views.CategoryViewSet)
 
 urlpatterns = [
     # new updated REST api's
+    # users
+    url(r'users/$', UserAPIView.as_view()),
+    url(r'users/(?P<username>\w+)/$', UserDetailAPIView.as_view(), name='user'),
+    # posts
     url(r'posts/$', PostAPIView.as_view()),
-    url(r'posts/(?P<id>\d+)/$', PostDetailAPIView.as_view()),
-
+    url(r'posts/(?P<id>\d+)/$', PostDetailAPIView.as_view(), name='post'),
+    # authors
+    url(r'authors/$', AuthorAPIView.as_view()),
+    url(r'authors/(?P<id>\d+)/$', AuthorDetailAPIView.as_view(), name='author'),
+    # categories
+    url(r'categories/$', CategoryAPIView.as_view()),
+    url(r'categories/(?P<id>\d+)/$', CategoryDetailAPIView.as_view(), name='category'),
+    # comments
+    url(r'comments/$', CommentAPIView.as_view()),
+    url(r'comments/(?P<id>\d+)/$', CommentDetailAPIView.as_view()),
+    # contacts
+    url(r'contacts/$', ContactAPIView.as_view()),
 
     url(r'rest-api/', include(router.urls)),
-    url(r'users', views.UserListView.as_view()),
+    # url(r'users', views.UserListView.as_view()),
     #url(r'^', views.home_page, name="HomePage"),
     # url(r'home/', views.PostList.as_view(), name='home'),
     url(r'^home$', views.blog, name='home'),
