@@ -71,7 +71,7 @@ class PostAPIView(
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
-    filterset_fields = ['featured']
+    filterset_fields = ['featured', 'categories__title']
     search_fields = ('title', 'content', 'categories__title',
                      'author__user__username', 'author__description')
 
