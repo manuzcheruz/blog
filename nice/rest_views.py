@@ -1,6 +1,7 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import generics, mixins, permissions, pagination
+from rest_framework import generics, mixins, permissions, pagination, filters
+from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
 import json
 from rest_framework.authentication import SessionAuthentication
@@ -69,6 +70,8 @@ class PostAPIView(
     authentication_classes = [SessionAuthentication]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    filterset_fields = ['featured']
     search_fields = ('title', 'content', 'categories__title',
                      'author__user__username', 'author__description')
 
@@ -125,6 +128,8 @@ class AuthorAPIView(
     pagination_classes = [pagination.LimitOffsetPagination]
     serializer_class = AuthorSerializer
     queryset = Author.objects.all()
+    filter_backends = [filters.SearchFilter, DjangoFilterBackend]
+    filterset_fields = ['user__username']
     search_fields = ('user__username', 'description')
     ordering_fields = ('id',)
 
