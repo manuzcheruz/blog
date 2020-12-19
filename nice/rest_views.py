@@ -5,6 +5,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from django.shortcuts import get_object_or_404
 import json
 from rest_framework.authentication import SessionAuthentication
+from rest_framework_jwt.authentication import JSONWebTokenAuthentication
 from .serializers import *
 from .models import *
 
@@ -67,7 +68,7 @@ class PostAPIView(
         mixins.CreateModelMixin,
         generics.ListAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [JSONWebTokenAuthentication]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     filter_backends = [filters.SearchFilter, DjangoFilterBackend]
@@ -100,7 +101,7 @@ class PostDetailAPIView(
         mixins.UpdateModelMixin,
         mixins.DestroyModelMixin):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = [JSONWebTokenAuthentication]
     serializer_class = PostSerializer
     queryset = Post.objects.all()
     lookup_field = 'id'
