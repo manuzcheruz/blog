@@ -75,7 +75,7 @@ class Post(models.Model):
         Author, on_delete=models.CASCADE)
     updated_on = models.DateTimeField(auto_now=True)
     content = HTMLField()
-    thumbnail = models.ImageField()
+    thumbnail = models.ImageField(null=True, blank=True)
     created_on = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=STATUS, default=0)
     featured = models.BooleanField()
