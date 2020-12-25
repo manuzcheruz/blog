@@ -280,7 +280,7 @@ class ContactAPIView(
         mixins.CreateModelMixin,
         generics.ListAPIView):
     permission_classes = [permissions.AllowAny]
-    authentication_classes = [SessionAuthentication]
+    authentication_classes = []
     serializer_class = ContactSerializer
 
     def get_queryset(self):
